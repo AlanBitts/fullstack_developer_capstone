@@ -12,3 +12,8 @@
 `python3 manage.py makemigrations`
 
 `python3 manage.py migrate`
+
+### Do this everytime you make changes to app.js
+`/server/database`
+`docker build . -t nodeapp`
+`docker-compose up`
