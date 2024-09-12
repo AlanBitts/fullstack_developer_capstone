@@ -23,3 +23,9 @@ npm run build
 ```
 > ### Do this everytime you make changes to app.js:
 >Inside `/server/database` directory run: `docker build . -t nodeapp && docker-compose up`
+
+### Proxy Services of Backend APIs: IBMcloud cli
+```bash
+ibmcloud plugin install code-engine
+ibmcloud login --sso
+```
