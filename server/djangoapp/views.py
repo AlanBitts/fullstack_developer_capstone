@@ -76,13 +76,15 @@ def registration(request):
 
 # method to get the list of cars
 def get_cars(request):
-    count = CarMake.objects.filter().count()
-    print(count)
+    count_makers = CarMake.objects.filter().count()
+    print(count_makers)
+    count_cars = CarModel.objects.count()
+    print(count_cars)
     car_models = CarModel.objects.select_related('car_make')
     cars = []
     for car_model in car_models:
-        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name, "Year": car_model.year})
-    return JsonResponse({"CarModels":cars})
+        cars.append({"CarModel": car_model.name, "CarMake": car_model.car_make.name})
+    return JsonResponse({"TotalMakers":count_makers, "TotalCars":count_cars, "CarModels":cars})
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
