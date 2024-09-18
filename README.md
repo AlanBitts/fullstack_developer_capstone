@@ -1,3 +1,6 @@
+### Contents
+[Architecture](#architecture)
+[Setup](#environment-setup)
 # Architecture
 - The Django application provides the following microservices for the end user:  
 `get_cars/` - To get the list of cars from  
