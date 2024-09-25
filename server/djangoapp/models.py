@@ -1,5 +1,5 @@
 from django.db import models
-#from django.utils.timezone import now
+# from django.utils.timezone import now
 # from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -26,7 +26,6 @@ class CarModel(models.Model):
         # add more choices if required
     ]
     type = models.CharField(max_length=10, choices=CAR_TYPES, default='Sedan')
-    
 
     def __str__(self):
         return self.name
