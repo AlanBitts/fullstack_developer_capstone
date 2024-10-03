@@ -2,6 +2,20 @@
 [Architecture](#architecture)  
 [Setup](#environment-setup)  
 
+# Preview
+This is the final capstone project for my full-stack developer course. The following stacks where used:
+- Django
+- React
+- MongoDB
+- Docker
+- Kubernetes
+
+![preview](preview/about_us.png)
+![preview](preview/contact_us.png)
+![preview](preview/login.png)
+![preview](preview/sign-up.png)
+![preview](preview/logout.png)
+![preview](preview/get_dealers.png)
 # Architecture
 - The Django application provides the following microservices for the end user:  
   `get_cars/` - To get the list of cars from  
