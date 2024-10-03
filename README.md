@@ -1,7 +1,3 @@
-### Contents
-[Architecture](#architecture)  
-[Setup](#environment-setup)  
-
 # Preview
 This is the final capstone project for my full-stack developer course. The following stacks where used:
 - Django
@@ -40,42 +36,3 @@ This is the final capstone project for my full-stack developer course. The follo
 The "Dealerships Website" consumes the "Sentiment Analyzer Service" to analyze the sentiments of the reviews through the Django Proxy contained within the Django application.  
 
 ![architecture](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMSkillsNetwork-CD0321EN-Coursera/labs/v2/m1/images/v2.capstone-dealership-architecture.png)
-
-# Environment setup
-1. `git clone` repository
-2. Run the following commands in /server to setup the Django environment:
-```bash
-pip install virtualenv
-virtualenv djangoenv
-source djangoenv/bin/activate
-```
-3. Install the required packages:
-`python3 -m pip install -U -r requirements.txt`
-4. Perform models migrations:
-```bash
-python3 manage.py makemigrations
-python3 manage.py migrate <or> python3 manage.py migrate --run-syncdb
-```
->The `--run-syncdb` allows creating tables for apps without migrations.  
-5. build your client by running the following commands:
-```bash
-cd server/frontend
-npm install
-npm run build
-```
-### Do this everytime you make changes to app.js:
->Inside `/server/database` directory run: `docker build . -t nodeapp && docker-compose up`
-
-### Do this everytime you make changes to the database
-1. restart the database server after rebuilding the frontend
-2. restart the django server
-
-### Deploy sentiment analysis on Code Engine as a microservice
-1. In the code engine CLI, change to server/djangoapp/microservices directory
-2. Run the following command to docker build the sentiment analyzer app: `docker build . -t us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer`
->Please note the code engine instance is transient and is attached to your lab space username
-3. Push the docker image by running the following command: `docker push us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer`
-4. Deploy the senti_analyzer application on code engine: `ibmcloud ce application create --name sentianalyzer --image us.icr.io/${SN_ICR_NAMESPACE}/senti_analyzer --registry-secret icr-secret --port 5000`
-5. Connect to the URL that is generated to access the microservices and check if the deployment is successful.
-6. Open djangoapp/.env and replace your code engine deployment url with the deployment URL you obtained above.
->It is essential to include the / at the end of the URL. Please ensure that it is copied
